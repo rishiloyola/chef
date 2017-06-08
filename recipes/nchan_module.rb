@@ -20,9 +20,9 @@
 #
 
 execute "install my nchan" do
-  command "wget #{default['nginx']['nchan']['url']}/v#{default['nginx']['nchan']['version']}.tar.gz -P #{default['nginx']['nchan']['dir']}"
-  command "tar -xvzf /tmp/v#{default['nginx']['nchan']['version']}.tar.gz"
+  command "wget #{node['nginx']['nchan']['url']}/v#{node['nginx']['nchan']['version']}.tar.gz -P #{node['nginx']['nchan']['dir']}"
+  command "tar -xvzf /tmp/v#{node['nginx']['nchan']['version']}.tar.gz"
 end
 
 node.run_state['nginx_configure_flags'] =
-  node.run_state['nginx_configure_flags'] | ["--add-module=#{nchan_path}/nchan-#{default['nginx']['nchan']['version']}"]
+  node.run_state['nginx_configure_flags'] | ["--add-module=#{nchan_path}/nchan-#{node['nginx']['nchan']['version']}"]
