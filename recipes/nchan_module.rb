@@ -25,4 +25,4 @@ execute "install my nchan" do
 end
 
 node.run_state['nginx_configure_flags'] =
-  node.run_state['nginx_configure_flags'] | ["--add-module=#{nchan_path}/nchan-#{node['nginx']['nchan']['version']}"]
+  node.run_state['nginx_configure_flags'] | ["--add-module=#{node['nginx']['nchan']['dir']}/nchan-#{node['nginx']['nchan']['version']}"]
