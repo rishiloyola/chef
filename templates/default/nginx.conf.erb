@@ -101,7 +101,7 @@ http {
   nchan_redis_url <%= node['nginx']['redis'] -%>;
   server {
     listen   <%= node['nginx']['port'] -%>;
-    server_name  <%= node['hostname'] %>;
+    server_name  <%= node['nginx']['hostname'] %>;
 
     location / {
         root   html;
