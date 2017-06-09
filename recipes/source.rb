@@ -29,7 +29,7 @@ nginx_url = node['nginx']['source']['url'] ||
             "http://nginx.org/download/nginx-#{node['nginx']['source']['version']}.tar.gz"
 
 node.set['nginx']['binary']          = node['nginx']['source']['sbin_path']
-node.set['nginx']['daemon_disable']  = true
+node.set['nginx']['daemon_disable']  = false
 
 unless node['nginx']['source']['use_existing_user']
   user node['nginx']['user'] do
