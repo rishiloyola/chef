@@ -72,7 +72,7 @@ default['nginx']['upstart']['foreground']    = true
 
 default['nginx']['group'] = node['nginx']['group'] || node['nginx']['user']
 
-default['nginx']['gzip']              = 'on'
+default['nginx']['gzip']              = 'off'
 default['nginx']['gzip_static']       = 'off'
 default['nginx']['gzip_http_version'] = '1.0'
 default['nginx']['gzip_comp_level']   = '2'
@@ -128,4 +128,5 @@ default['nginx']['client_max_body_size']        = nil
 default['nginx']['large_client_header_buffers'] = nil
 default['nginx']['default']['modules']          = []
 
+default['nginx']['redis']                       = "\"redis://localhost:6379\""
 default['nginx']['extra_configs'] = {}

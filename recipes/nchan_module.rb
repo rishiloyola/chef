@@ -20,7 +20,7 @@
 #
 
 execute "install my nchan" do
-  command "wget #{node['nginx']['nchan']['url']}/v#{node['nginx']['nchan']['version']}.tar.gz -P #{node['nginx']['nchan']['dir']}"
+  command "wget #{node['nginx']['nchan']['url']}v#{node['nginx']['nchan']['version']}.tar.gz -P #{node['nginx']['nchan']['dir']}"
   command "tar -xvzf /tmp/v#{node['nginx']['nchan']['version']}.tar.gz"
 end
 
