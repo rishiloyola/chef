@@ -129,5 +129,8 @@ default['nginx']['client_max_body_size']        = nil
 default['nginx']['large_client_header_buffers'] = nil
 default['nginx']['default']['modules']          = []
 
-default['nginx']['redis']                       = "\"redis://localhost:6379\""
+default['nginx']['redis']['url']                = "\"redis://localhost:6379\""
+default['nginx']['redis']['switch']             = 'on'
+default['nginx']['timeout']['default']          = '60'
+default['nginx']['timeout']['websocket']        = '1h'
 default['nginx']['extra_configs'] = {}

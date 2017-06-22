@@ -98,7 +98,7 @@ http {
   <%= key %> <%= value %>;
   <% end -%>
 
-  nchan_redis_url <%= node['nginx']['redis'] -%>;
+  nchan_redis_url <%= node['nginx']['redis']['url'] -%>;
   server {
     listen   <%= node['nginx']['port'] -%>;
     server_name  <%= node['nginx']['hostname'] %>;
@@ -111,17 +111,21 @@ http {
     location ~ /subscribe/(.*) {
             nchan_subscriber;
             nchan_channel_id $1;
-            nchan_use_redis on;
+            nchan_subscriber_timeout <%= node['nginx']['timeout']['default'] -%>;
+            if ($http_upgrade = "websocket") {
+              nchan_subscriber_timeout <%= node['nginx']['timeout']['websocket'] -%>;
+            }
+            nchan_use_redis <%= node['nginx']['redis']['switch'] -%>;
             add_header 'Access-Control-Allow-Headers' 'etag';
             add_header Cache-Control no-cache;
             add_header 'Access-Control-Allow-Credentials' 'true';
-            add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+            add_header 'Access-Control-Allow-Methods' 'GET, POST';
     }
 
     location ~ /publish/(.*) {
             nchan_publisher;
             nchan_channel_id $1;
-            nchan_use_redis on;
+            nchan_use_redis <%= node['nginx']['redis']['switch'] -%>;
     }
   }
 }
