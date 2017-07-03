@@ -133,4 +133,5 @@ default['nginx']['redis']['url']                = "\"redis://localhost:6379\""
 default['nginx']['redis']['switch']             = 'on'
 default['nginx']['timeout']['default']          = '60'
 default['nginx']['timeout']['websocket']        = '1h'
+default['nginx']['ping']['websocket']           = '600'
 default['nginx']['extra_configs'] = {}
