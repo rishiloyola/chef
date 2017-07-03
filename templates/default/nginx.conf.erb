@@ -114,6 +114,7 @@ http {
             nchan_subscriber_timeout <%= node['nginx']['timeout']['default'] -%>;
             if ($http_upgrade = "websocket") {
               nchan_subscriber_timeout <%= node['nginx']['timeout']['websocket'] -%>;
+              nchan_websocket_ping_interval <%= node['nginx']['ping']['websocket'] -%>;
             }
             nchan_use_redis <%= node['nginx']['redis']['switch'] -%>;
             add_header 'Access-Control-Allow-Headers' 'etag';
